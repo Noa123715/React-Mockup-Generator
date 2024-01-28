@@ -8,7 +8,7 @@ const App = () => {
 
     return (
         <div>
-            <TableComponent data={tableData} />
+            <TableComponent data={tableData} colunms_names={["1","2","3"]}/>
         </div>
     );
 };
