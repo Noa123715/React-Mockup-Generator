@@ -1,28 +1,22 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const { OpenAI } = require("openai");
-require("dotenv").config();
-
-
+// server.js or a specific route file
+const express = require('express');
+const { generateReactCode } = require('./service/react-code-generator');
+require('dotenv').config();
 const app = express();
-const port = 3000;
+app.use(express.json());
 
-app.use(bodyParser.json());
-
-app.post("/generate-jsx", async (req, res) => {
-  const openai = new OpenAI((apiKey = process.env.OPENAI_API_KEY));
-  const description = req.body.description;
-
-  const response = await openai.completions.create({
-    model: "text-davinci-003", // Choose the model you prefer
-    prompt: `Generate JSX code for: ${description}`,
-    max_tokens: 150,
-  });
-
-  const jsxCode = response.data.choices[0].text.trim();
-  res.json({ jsx: jsxCode });
+app.post('/generate-react-code', async (req, res) => {
+  const { description } = req.body;
+  try {
+    const reactCode = await generateReactCode(description);
+    console.log(reactCode)
+    res.json({ reactCode });
+  } catch (error) {
+    res.status(500).send('Error generating React code');
+  }
 });
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

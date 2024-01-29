@@ -4,10 +4,12 @@ const {OpenAI} = require("openai");
 
 
 const generateCompletion = async (prompt, model = "text-davinci-003", temperature = 0.7, maxTokens = 1000, stopSequences = ["</div>"]) => {
- const openai  = new OpenAI({
+   console.log("how are you?")
+   console.log(process.env.OPENAI_API_KEY)
+    const openai  = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
-    baseURL: process.env.OPENAI_BASE_URL// This is the default and can be omitted
   });
+    console.log(openai)
     const response = await openai.completions.create({
     model:model,
     prompt:prompt,
