@@ -1,10 +1,10 @@
 import {  Home } from "./pages/Home";
-import { NotFound } from "./pages/NotFound";
+import { NotFound } from "./pages/";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import { Test } from "./pages/Test";
+import  TestPage  from "./pages/TestPage";
 
 export const browserRouter = createBrowserRouter([
   {
