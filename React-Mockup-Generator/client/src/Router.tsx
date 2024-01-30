@@ -1,10 +1,10 @@
-import {  Home } from "./pages/Home";
-import { NotFound } from "./pages/";
+import   Login  from "./pages/Login";
+import {NotFound}  from "./pages/NotFound";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import  TestPage  from "./pages/TestPage";
+import  {Test } from "./pages/Test";
 
 export const browserRouter = createBrowserRouter([
   {
@@ -12,12 +12,12 @@ export const browserRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Login />,
       },
-      {
-        path: "/home",
-        element: <Home />,
-      },
+      // {
+      //   path: "/home",
+      //   element: <Home />,
+      // },
       {
         path: "/test",
         element: <Test />,  
